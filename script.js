@@ -20,10 +20,10 @@ let displayLink = document.querySelector (".display-link");
 
 // task 7: create and populate an array to store your image urls. Create three more arrays. One to store your song names, one for the artists, and a last one for the song links.
 
-let imageL = [];
-let nameL = [];
-let artistL = [];
-let linkL = [];
+let imageL = ["https://images.genius.com/5f8ccc078c2902f637eafd2e0ece7cfb.1000x1000x1.jpg","https://i.ytimg.com/vi/x2J_0tN0luQ/maxresdefault.jpg","https://y.qq.com/music/photo_new/T002R300x300M000003R2xOT4ZKC8I_1.jpg?max_age=2592000","https://y.qq.com/music/photo_new/T002R300x300M000001fqR3749jFpE_1.jpg?max_age=2592000","https://i.ytimg.com/vi/97axrS3Npxk/maxresdefault.jpg","https://i.ytimg.com/vi/Kec43PcGg7I/hqdefault.jpg"];
+let nameL = ["The One And Only","达尔文 (Darwin)","洛希极限 (Roche limit)","寂寞烟火","步步 (Step By Step)","挚友 (Best Friend)"];
+let artistL = ["Accusefive","JJ Lin","任然","蓝心羽","五月天 (Mayday)","Eric Chou"];
+let linkL = ["https://www.youtube.com/watch?v=vxucCfcMFCk","https://www.youtube.com/watch?v=ouBgF12JgTA","https://www.youtube.com/watch?v=ASWRcLxT9Sk","https://www.youtube.com/watch?v=cuVUv5qw5-c","https://www.youtube.com/watch?v=97axrS3Npxk","https://www.youtube.com/watch?v=Kec43PcGg7I"];
 
 
 //REFACTOR ARRAYS DAY 
@@ -69,10 +69,17 @@ function emptyDisplay() {
 function displaySongInfo() {
 
 // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
+imageL.forEach (function (image){
+  displayImg.insertAdjacentHTML ('beforeend',`<img src = ${image}>`)})
+nameL.forEach (function (name){
+  displayName.insertAdjacentHTML ('beforeend',`<p> ${name} </p>`)})
+artistL.forEach (function (artist){
+  displayArtist.insertAdjacentHTML ('beforeend',`<p> ${artist} </p>`)})
+linkL.forEach (function (link) {
+  displayLink.insertAdjacentHTML ('beforeend', `<a href = ${link} > See Music Video </a>`)
+})
+};
 
-
-
-}
 
 
 
