@@ -9,6 +9,7 @@ let songLink = document.querySelector(".song-link");
 
 // button variable
 let add = document.querySelector(".add");
+let remove = document.querySelector (".delete");
 
 
 // task 6: declare variables for your display divs: the image url, song name, artist, and song link. Go back to the HTML to check that you are using the correct class names.
@@ -46,10 +47,16 @@ let linkL = ["https://www.youtube.com/watch?v=vxucCfcMFCk","https://www.youtube.
 function addSongInfo() {
 
 // task 9: declare a variable to save the user input of the image url. Declare three more variables that save user input: One for the song names, one for the artists, and a last one for the song links.
-
+let imgInput = image.value;
+let nameInput = songName.value;
+let artistInput = artist.value;
+let linkInput = songLink.value;
 
 // task 10: use `.push()` to add each input value to the correct array.
-
+imageL.push (imgInput);
+nameL.push (nameInput);
+artistL.push (artistInput);
+linkL.push (linkInput);
 }
 
 
@@ -57,8 +64,8 @@ function addSongInfo() {
 
 /******** this function empties the display divs each time the button is clicked so that your playlist does not repeatedly add the data too many times. Where should this function be placed???********/
 function emptyDisplay() {
-  displayImage.innerHTML = "";
-  displaySong.innerHTML = "";
+  displayImg.innerHTML = "";
+  displayName.innerHTML = "";
   displayArtist.innerHTML = "";
   displayLink.innerHTML = "";
 }
@@ -88,7 +95,12 @@ linkL.forEach (function (link) {
 // click event to add and display songs
 add.onclick = function() {
   addSongInfo();
+  emptyDisplay();
   displaySongInfo();
+  image.value = "";
+  songName.value = "";
+  artist.value="";
+  songLink.value="";
 };
 
 // function call to display stored songs
