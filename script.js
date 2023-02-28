@@ -10,6 +10,7 @@ let songLink = document.querySelector(".song-link");
 // button variable
 let add = document.querySelector(".add");
 let remove = document.querySelector (".delete");
+let count = 6;
 
 
 // task 6: declare variables for your display divs: the image url, song name, artist, and song link. Go back to the HTML to check that you are using the correct class names.
@@ -20,20 +21,54 @@ let displayLink = document.querySelector (".display-link");
 
 
 // task 7: create and populate an array to store your image urls. Create three more arrays. One to store your song names, one for the artists, and a last one for the song links.
-
+/*
 let imageL = ["https://images.genius.com/5f8ccc078c2902f637eafd2e0ece7cfb.1000x1000x1.jpg","https://i.ytimg.com/vi/x2J_0tN0luQ/maxresdefault.jpg","https://y.qq.com/music/photo_new/T002R300x300M000003R2xOT4ZKC8I_1.jpg?max_age=2592000","https://y.qq.com/music/photo_new/T002R300x300M000001fqR3749jFpE_1.jpg?max_age=2592000","https://i.ytimg.com/vi/97axrS3Npxk/maxresdefault.jpg","https://i.ytimg.com/vi/Kec43PcGg7I/hqdefault.jpg"];
 let nameL = ["The One And Only","达尔文 (Darwin)","洛希极限 (Roche limit)","寂寞烟火","步步 (Step By Step)","挚友 (Best Friend)"];
 let artistL = ["Accusefive","JJ Lin","任然","蓝心羽","五月天 (Mayday)","Eric Chou"];
 let linkL = ["https://www.youtube.com/watch?v=vxucCfcMFCk","https://www.youtube.com/watch?v=ouBgF12JgTA","https://www.youtube.com/watch?v=ASWRcLxT9Sk","https://www.youtube.com/watch?v=cuVUv5qw5-c","https://www.youtube.com/watch?v=97axrS3Npxk","https://www.youtube.com/watch?v=Kec43PcGg7I"];
-
+*/
 
 //REFACTOR ARRAYS DAY 
 // task 11: comment out the arrays data.
 // task 12: create an object for each of your songs.
 // task 13: inside each object, add key/value pairs to store the image url, song name, artist, and song link.
 // task 14: create an array that stores all of the objects.
-
-
+let songList = [{
+  image: "https://images.genius.com/5f8ccc078c2902f637eafd2e0ece7cfb.1000x1000x1.jpg",
+  name: "The One And Only",
+  artist: "Accusefive",
+  link: "https://www.youtube.com/watch?v=vxucCfcMFCk"
+},
+{
+  image: "https://i.ytimg.com/vi/x2J_0tN0luQ/maxresdefault.jpg",
+  name: "达尔文 (Darwin)",
+  artist: "JJ Lin",
+  link: "https://www.youtube.com/watch?v=ouBgF12JgTA"
+},
+{
+  image: "https://y.qq.com/music/photo_new/T002R300x300M000003R2xOT4ZKC8I_1.jpg?max_age=2592000",
+  name: "洛希极限 (Roche limit)",
+  artist: "任然",
+  link: "https://www.youtube.com/watch?v=ASWRcLxT9Sk"
+},
+{
+image: "https://y.qq.com/music/photo_new/T002R300x300M000001fqR3749jFpE_1.jpg?max_age=2592000",
+  name: "寂寞烟火",
+  artist: "蓝心羽",
+  link: "https://www.youtube.com/watch?v=cuVUv5qw5-c"
+},
+{
+image: "https://i.ytimg.com/vi/97axrS3Npxk/maxresdefault.jpg",
+  name: "步步 (Step By Step)",
+  artist: "五月天 (Mayday)",
+  link: "https://www.youtube.com/watch?v=97axrS3Npxk"
+},
+{
+image: "https://i.ytimg.com/vi/Kec43PcGg7I/hqdefault.jpg",
+  name: "挚友 (Best Friend)",
+  artist: "Eric Chou",
+  link: "https://www.youtube.com/watch?v=Kec43PcGg7I"
+}];
 
 //REFACTOR LOOPS DAY 
 // task 15: update your `addSongInfo` function so the input values are saved in as values in a new object.
@@ -47,16 +82,15 @@ let linkL = ["https://www.youtube.com/watch?v=vxucCfcMFCk","https://www.youtube.
 function addSongInfo() {
 
 // task 9: declare a variable to save the user input of the image url. Declare three more variables that save user input: One for the song names, one for the artists, and a last one for the song links.
-let imgInput = image.value;
-let nameInput = songName.value;
-let artistInput = artist.value;
-let linkInput = songLink.value;
-
+let song = {
+image: image.value,
+name: songName.value,
+artist: artist.value,
+link: songLink.value
+}
 // task 10: use `.push()` to add each input value to the correct array.
-imageL.push (imgInput);
-nameL.push (nameInput);
-artistL.push (artistInput);
-linkL.push (linkInput);
+songList.push (song);
+count = count + 1;
 }
 
 
@@ -76,6 +110,7 @@ function emptyDisplay() {
 function displaySongInfo() {
 
 // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
+/*
 imageL.forEach (function (image){
   displayImg.insertAdjacentHTML ('beforeend',`<img src = ${image}>`)})
 nameL.forEach (function (name){
@@ -86,10 +121,14 @@ linkL.forEach (function (link) {
   displayLink.insertAdjacentHTML ('beforeend', `<a href = ${link} > See Music Video </a>`)
 })
 };
-
-
-
-
+*/
+songList.forEach (function (song){
+  displayImg.insertAdjacentHTML ('beforeend',`<img src = ${song.image}>`);
+  displayName.insertAdjacentHTML ('beforeend',`<p> ${song.name} </p>`);
+  displayArtist.insertAdjacentHTML ('beforeend',`<p> ${song.artist} </p>`);
+  displayLink.insertAdjacentHTML ('beforeend', `<a href = ${song.link} > See Music Video </a>`)
+});
+}
 
 
 // click event to add and display songs
