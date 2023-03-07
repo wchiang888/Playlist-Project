@@ -6,11 +6,11 @@ let image = document.querySelector(".image");
 let songName = document.querySelector(".song-name");
 let artist = document.querySelector(".artist");
 let songLink = document.querySelector(".song-link");
+let index = document.querySelector (".deleteN");
 
 // button variable
 let add = document.querySelector(".add");
 let remove = document.querySelector (".delete");
-let count = 6;
 
 
 // task 6: declare variables for your display divs: the image url, song name, artist, and song link. Go back to the HTML to check that you are using the correct class names.
@@ -18,6 +18,7 @@ let displayImg = document.querySelector (".display-image");
 let displayName = document.querySelector (".display-song");
 let displayArtist = document.querySelector (".display-artist");
 let displayLink = document.querySelector (".display-link");
+let count = document.querySelector (".songCount");
 
 
 // task 7: create and populate an array to store your image urls. Create three more arrays. One to store your song names, one for the artists, and a last one for the song links.
@@ -70,6 +71,7 @@ image: "https://i.ytimg.com/vi/Kec43PcGg7I/hqdefault.jpg",
   link: "https://www.youtube.com/watch?v=Kec43PcGg7I"
 }];
 
+
 //REFACTOR LOOPS DAY 
 // task 15: update your `addSongInfo` function so the input values are saved in as values in a new object.
 // task 16: update your `.push()` so the input object is added to your array of objects.
@@ -90,10 +92,12 @@ link: songLink.value
 }
 // task 10: use `.push()` to add each input value to the correct array.
 songList.push (song);
-count = count + 1;
 }
 
-
+function deleteSongInfo () {
+let k = index.value;
+songList.splice (k-1, 1);
+}
 
 
 /******** this function empties the display divs each time the button is clicked so that your playlist does not repeatedly add the data too many times. Where should this function be placed???********/
@@ -128,6 +132,7 @@ songList.forEach (function (song){
   displayArtist.insertAdjacentHTML ('beforeend',`<p> ${song.artist} </p>`);
   displayLink.insertAdjacentHTML ('beforeend', `<a href = ${song.link} > See Music Video </a>`)
 });
+  count.innerHTML = `<p> Number of Songs: ${songList.length} </p>`
 }
 
 
@@ -142,5 +147,11 @@ add.onclick = function() {
   songLink.value="";
 };
 
+remove.onclick = function () {
+  deleteSongInfo ();
+  emptyDisplay();
+  displaySongInfo();
+  index.value ="";
+};
 // function call to display stored songs
 displaySongInfo();
